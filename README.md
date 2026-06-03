@@ -38,11 +38,11 @@ CNNによる画像分類から、最新の生成AI (DDPM, GPT)、実務応用の
 *   **技術的アピール（工夫した点）**:
     *   順方向のノイズ付加 (Forward Process) と、逆方向のノイズ予測 (Reverse Process) の数式を正しくPyTorchコードに落とし込みました. その際にコサインによるノイズスケジューリングを行いました.
     *   U-Net構造を採用し、タイムステップ (Time Embedding) を条件付けとしてモデルに入力する機構を作成しました.
-    *   ランダムノイズから段階的にノイズが除去され、クリアな数字画像が生成されるプロセスを以下に、 $t=T$, $t=T/2$, $t=0$ における生成画像 (各 $10$ 枚) によって示します.
+    *   訓練によって、よりクリアな数字画像が生成されるプロセスを以下に、 $1$, $200$, $400$ エポックにおける生成画像 (各 $10$ 枚) によって示します.
 
-| 初期ノイズ ($t=T$) | ノイズ除去の途中経過 ($t=T/2$) | 最終生成画像 ($t=0$) |
+| 初期段階 ($1$ エポック) | 訓練の途中経過 ($200$ エポック) | 最終生成画像 ($400$ エポック) |
 | :---: | :---: | :---: |
-| ![初期ノイズ](images/epoch_1.png) | ![途中経過](images/epoch_200.png) | ![最終生成](images/sample_epoch_400.png) |
+| ![初期段階](images/epoch_1.png) | ![途中経過](images/epoch_200.png) | ![最終生成](images/sample_epoch_400.png) |
 
 ### 4. 青空文庫によるミニGPT文章生成
 *   **課題・目的**: 大規模言語モデル (LLM) の基盤であるTransformer構造を理解し、日本語の文脈に沿ったテキストを自動生成すること.
@@ -83,11 +83,11 @@ CNNによる画像分類から、最新の生成AI (DDPM, GPT)、実務応用の
 │   ├── 03_mnist_ddpm_model.ipynb
 │   ├── 04_soseki_gpt_transformer.ipynb
 │   └── 05_cifar10_autoencoder_anomaly_detection.ipynb
-├―― images/
-│   ├――epoch_1.png
-│   ├――epoch_200.png
-│   ├――sample_epoch_400.png
-│   └──roc_curve.png
+├── images/
+│   ├── epoch_1.png
+│   ├── epoch_200.png
+│   ├── sample_epoch_400.png
+│   └── roc_curve.png
 ├── requirements.txt
 └── README.md
 ```
